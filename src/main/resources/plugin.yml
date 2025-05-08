@@ -1,0 +1,7 @@
+name: MineQuizz
+version: '1.0'
+main: fr.jeancraft.mineQuizz.MineQuizz
+api-version: '1.21'
+load: STARTUP
+authors: [ Rabio15, Zelriano36 ]
+description: Le pluglin de Quizz de Jeancraft
