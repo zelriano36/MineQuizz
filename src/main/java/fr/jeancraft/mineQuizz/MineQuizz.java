@@ -4,6 +4,7 @@ import fr.jeancraft.mineQuizz.Autre.ChangeDifficult;
 import fr.jeancraft.mineQuizz.commands.Classement;
 import fr.jeancraft.mineQuizz.commands.QuizzCommand;
 import fr.jeancraft.mineQuizz.event.*;
+import fr.jeancraft.mineQuizz.manager.PointManager;
 import fr.jeancraft.mineQuizz.manager.ScoreBoardManager;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
@@ -24,16 +25,18 @@ public final class MineQuizz extends JavaPlugin {
 
         @Override
         public void onEnable() {
-            // Initialisation de LuckPerms si disponible
+            PointManager pointManager = new PointManager(this);
             LuckPerms luckPermsApi = setupLuckPerms();
             // Initialisation du gestionnaire de tableaux de score
-            ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this, luckPermsApi);
+            ScoreBoardManager scoreBoardManager = new ScoreBoardManager(this, luckPermsApi, pointManager);
             Bukkit.getScheduler().runTaskTimer(this, () -> {
                 for (Player player : Bukkit.getOnlinePlayers()) {
                     scoreBoardManager.createScoreboard(player);
                 }
 
             }, 0L, 20L);
+            saveResource("config.yml",false);
+            saveResource("classement.yml",false);
 
             // Initialisation des fonctionnalités
             ChangeDifficult changeDifficult = new ChangeDifficult();
