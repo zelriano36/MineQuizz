@@ -5,3 +5,12 @@ api-version: '1.21'
 load: STARTUP
 authors: [ Rabio15, Zelriano36 ]
 description: Le pluglin de Quizz de Jeancraft
+depend:
+  - LuckPerms
+commands:
+  quizz:
+    description: commande de quizz
+    usage: /quizz
+  classement:
+    description: commande pour connaitre le classement des joueurs
+    usage: /classement
