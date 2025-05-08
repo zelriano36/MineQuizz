@@ -53,6 +53,8 @@ public final class MineQuizz extends JavaPlugin {
             loadPlayerData();
         }
 
+        //peti test push 08/05/25 à 20h35
+
         @Override
         public void onDisable() {
             // Actions lors de la désactivation du plugin si nécessaire

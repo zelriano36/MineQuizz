@@ -36,7 +36,7 @@ public class PointManager {
 
     }
     public void SetPoints(Player player, int newpoints) {
-        int points =GetPoints(player);
+        int points = GetPoints(player);
         points = newpoints;
 
     }
