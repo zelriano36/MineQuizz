@@ -121,6 +121,28 @@ public class InventoryDefisQuestionGestion implements Listener {
 
         //vérifie que si le l'objet a le nom d'un matier et bien redéfinir le subject
 
+        switch (itemName){
+            case "craaa":
+                player.sendMessage("________________________");
+                player.sendMessage("                            ");
+                player.sendMessage("                            ");
+                player.sendMessage("                            ");
+                player.sendMessage("________________________");
+
+                break;
+            case "cratpo":
+
+                player.sendMessage("________________________");
+                player.sendMessage("                            ");
+                player.sendMessage("                            ");
+                player.sendMessage("                            ");
+                player.sendMessage("________________________");
+                break;
+            default:
+                player.sendMessage("Le switch detecte rien");
+        }
+
+
         if(ReponseMatier.contains(itemName)) {
 
 
@@ -134,7 +156,7 @@ public class InventoryDefisQuestionGestion implements Listener {
 
 //le probléme tu fais que j'arrive pas aller plus que la premier question au inventaire defis vien de la 19/04/25
         }else {
-            player.sendMessage("§9 Non");
+            player.sendMessage("§9 Mauvais subject");
 
             if(!ByPass_NextQuestionIsEmpty ) {
                 player.sendMessage("§4 Le Bypass esdt sur false !! et subject is : " + subject);
@@ -180,12 +202,13 @@ public class InventoryDefisQuestionGestion implements Listener {
                     player.sendMessage("Le subject et$$ " + subject);
 
 
-                    Map.Entry<String, List<String>> nextQuestion = nextQuestions.get(0); // Récupère la première question
+                    Map.Entry<String, List<String>> nextQuestion = nextQuestions.get(1); // Récupère la première question
 
 
                     //y a     peut etre un truc 01/05/25 verifier avec lautre classe
                     player.sendMessage("§c On essaye de de crée l'inventaire de defis  " );
 
+                    //il ya un soucis ici  quand il crée un nouveaux invedntaire toujurs il prend la premier valeur par defaut 09/05/25
                     CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
 
                     //on instancie la classe
@@ -193,7 +216,9 @@ public class InventoryDefisQuestionGestion implements Listener {
 
                     df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
 
-                    player.sendMessage("L'inventaire à til etait crée?  " );
+                    player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
+                    player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
+                    player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
                     player.sendMessage("§4 le Q_q est " +  Q_q);
 
                     // peut etre changer ça la je vien de le mettre en commentaire et pas encore tester 04/05/25  ByPass_NextQuestionIsEmpty = false;
@@ -375,6 +400,7 @@ public class InventoryDefisQuestionGestion implements Listener {
                 player.sendMessage("Un ajout à été effectuer");
                 questionKeyBuilder.append('1');
                 player.sendMessage("§4 le Q_q est " +  Q_q);
+                player.sendMessage("§7 1er le suprem " + nextQuestionKey);
             }else{
                 player.sendMessage("Petite erreur qui empeche l'ajout de 1 au Q11 ");
                 player.sendMessage("Le Q_q est sur  ["+ Q_q +"]");
@@ -384,12 +410,14 @@ public class InventoryDefisQuestionGestion implements Listener {
             player.sendMessage("§7 1er le suprem " + nextQuestionKey);
             nextQuestionKey = questionKeyBuilder.toString();
 
-            player.sendMessage("§7 1er le suprem " + nextQuestionKey);
+            player.sendMessage("§7 2er le suprem " + nextQuestionKey);
+
             List<Map.Entry<String, List<String>>> nextQuestionss = questionLoader.getQuestionsDefis(subject,nextQuestionKey,player);
             player.sendMessage("NextQuestionkkey le truc qui rapport avec Q est : " + nextQuestionKey);
 
 
             if (!nextQuestionss.isEmpty()) {
+
                 player.sendMessage("////Le subject et " + subject);
                 player.sendMessage("Double verification reussi  ");
 
@@ -400,6 +428,8 @@ public class InventoryDefisQuestionGestion implements Listener {
                 player.sendMessage("3 verfi la key est " + nextQuestion.getKey() +"et  .la valeur est "+ nextQuestion.getValue());
 
                 df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
+                player.sendMessage(" 2 eme L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
+
 
 
                 player.sendMessage("H" + nextQuestionKey);//il ets la fdp de merde de bug
