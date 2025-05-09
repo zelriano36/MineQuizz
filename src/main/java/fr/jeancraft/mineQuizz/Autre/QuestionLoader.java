@@ -245,7 +245,9 @@ public class QuestionLoader {
 
 
 
-        return configD.getStringList("MATIERSCOLAIRE.scolaire"); // Récupère la liste des défis
+        return configD.getStringList("MATIERSCOLAIRE.scolaire");
+
+        // Récupère la liste des défis
     }
 
 

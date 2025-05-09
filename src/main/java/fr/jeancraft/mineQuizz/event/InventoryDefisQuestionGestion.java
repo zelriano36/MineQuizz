@@ -125,7 +125,7 @@ public class InventoryDefisQuestionGestion implements Listener {
 
 
             subject = itemName;
-            player.sendMessage("§9 HAPPY HAPPY HAPPY");
+            player.sendMessage("§9 HAPPY Le nouveaux subject est " + subject );
 
 
             ByPass_NextQuestionIsEmpty = true;
@@ -310,6 +310,7 @@ public class InventoryDefisQuestionGestion implements Listener {
             if(complete == 1){
                 player.sendMessage("§6 Aucun reponse bonne de détecter" );
                 player.sendMessage("§4 le Q_q est " +  Q_q);
+                Addition_fin += 1;
 
                 vérification(player);
             }
@@ -406,7 +407,7 @@ public class InventoryDefisQuestionGestion implements Listener {
 
                 changingInventory.add(player);
                 complete = 1;
-                Q_q += 1;
+                Q_q  = 1;
 
                 //y a un truc avec le Q_q important genre le truc s'excute 2 fois a cause du quq qqui fait que on peut acc&éder a laqutre truc
 
@@ -439,6 +440,7 @@ public class InventoryDefisQuestionGestion implements Listener {
 
                 player.sendMessage(ChatColor.DARK_AQUA  + "Vous avez terminer toute les questions de ce niveau !");
                 player.sendMessage("Vos point actuel sont " + point);
+
                 player.sendMessage("////Le subject et " + subject);
                 GestionInvetory gstinv = new GestionInvetory(main, player);
 
@@ -457,6 +459,28 @@ public class InventoryDefisQuestionGestion implements Listener {
         }else {
 
             if(complete == 1) {
+
+
+                File fileC = new File(main.getDataFolder(), "classement.yml");
+
+                YamlConfiguration configC = YamlConfiguration.loadConfiguration(fileC);
+                String keyC = "players." + player.getUniqueId();
+
+                // ne comprend pas son utiliter je pense que c'est pour le classement mais je trouve rien int pointC = configC.getInt(keyC + ".point",0);
+
+                point +=  Addition_fin;
+                config.set(key + ".point",point);
+                configC.set(keyC + ".point",point);
+
+                try {
+                    config.save(file);
+                    configC.save(fileC);
+                } catch (IOException e) {
+
+                    e.printStackTrace();
+                }
+
+
                 reset(player);
                 changingInventory.remove(player);
                 BlockQuestion(player, subject);
@@ -502,16 +526,10 @@ public class InventoryDefisQuestionGestion implements Listener {
     public void onPlayerQuit(PlayerQuitEvent event) {
         // Code à exécuter lorsque le joueur se déconnecte
         Player player = event.getPlayer();
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
-        player.sendMessage("aie aiez aiezzzzzzz");
+        player.sendMessage(ChatColor.DARK_PURPLE + "LE JOUEURS A QUITTER LA PARTIE !!");
+        player.sendMessage(ChatColor.DARK_PURPLE + "LE JOUEURS A QUITTER LA PARTIE !!");
+        player.sendMessage(ChatColor.DARK_PURPLE + "LE JOUEURS A QUITTER LA PARTIE !!");
+        player.sendMessage(ChatColor.DARK_PURPLE + "LE JOUEURS A QUITTER LA PARTIE !!");
 
 
         reset(player);
