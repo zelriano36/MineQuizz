@@ -2,6 +2,7 @@ package fr.jeancraft.mineQuizz;
 
 import fr.jeancraft.mineQuizz.Autre.ChangeDifficult;
 import fr.jeancraft.mineQuizz.commands.Classement;
+import fr.jeancraft.mineQuizz.commands.PointCommand;
 import fr.jeancraft.mineQuizz.commands.QuizzCommand;
 import fr.jeancraft.mineQuizz.event.*;
 import fr.jeancraft.mineQuizz.manager.PointManager;
@@ -43,11 +44,12 @@ public final class MineQuizz extends JavaPlugin {
             this.inventoryPnj = new InventoryQuestionPnj(this, "");
 
             // Enregistrement des événements
-            registerEvents(changeDifficult);
+            registerEvents(changeDifficult, pointManager);
 
             // Enregistrement des commandes
             getCommand("quizz").setExecutor(new QuizzCommand(this));
             getCommand("classement").setExecutor(new Classement(this));
+            getCommand("point").setExecutor(new PointCommand(pointManager));
 
             // Chargement des données des joueurs
             loadPlayerData();
@@ -65,9 +67,9 @@ public final class MineQuizz extends JavaPlugin {
             return provider != null ? provider.getProvider() : null;
         }
 
-        private void registerEvents(ChangeDifficult changeDifficult) {
+        private void registerEvents(ChangeDifficult changeDifficult, PointManager pointManager) {
             getServer().getPluginManager().registerEvents(new InventoryClickMatier(this), this);
-            getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this, this.inventoryPnj), this);
+            getServer().getPluginManager().registerEvents(new InventoryClickDifficultAndQuestion(changeDifficult, this, this.inventoryPnj, pointManager), this);
             getServer().getPluginManager().registerEvents(new ClickItemStart(this), this);
             getServer().getPluginManager().registerEvents(this.inventoryPnj, this);
             getServer().getPluginManager().registerEvents(new PassageClassrom(this), this);

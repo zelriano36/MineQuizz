@@ -8,9 +8,22 @@ description: Le pluglin de Quizz de Jeancraft
 depend:
   - LuckPerms
 commands:
+  point:
+    description: Gérer les points des joueurs.
+    usage: |
+      /point <player> check - Vérifie les points d'un joueur.
+      /point <player> set <amount> - Définit les points d'un joueur.
+      /point <player> add <amount> - Ajoute des points à un joueur.
+      /point <player> remove <amount> - Retire des points à un joueur.
+    permission: minequizz.point
+    permission-message: §cVous n'avez pas la permission d'utiliser cette commande !
   quizz:
     description: commande de quizz
     usage: /quizz
   classement:
     description: commande pour connaitre le classement des joueurs
     usage: /classement
+permissions:
+  minequizz.point:
+    description: Permet de gérer les points des joueurs.
+    default: op
