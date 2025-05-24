@@ -195,33 +195,34 @@ public class InventoryDefisQuestionGestion implements Listener {
 
 
                 player.sendMessage("Bravo 1 ");
-
+  
                 if (!hasCompletedQuiz(player, subject)) {
 
-                    complete = 1;
-                    player.sendMessage("Le subject et$$ " + subject);
+                            complete = 1;
+
+                            player.sendMessage("Le subject et$$1 " + subject);
 
 
-                    Map.Entry<String, List<String>> nextQuestion = nextQuestions.get(1); // Récupère la première question
+                            Map.Entry<String, List<String>> nextQuestion = nextQuestions.get(0); // Récupère la première question
 
 
-                    //y a     peut etre un truc 01/05/25 verifier avec lautre classe
-                    player.sendMessage("§c On essaye de de crée l'inventaire de defis  " );
+                            //y a     peut etre un truc 01/05/25 verifier avec lautre classe
+                            player.sendMessage("§c On essaye de de crée l'inventaire de defis  " );
 
-                    //il ya un soucis ici  quand il crée un nouveaux invedntaire toujurs il prend la premier valeur par defaut 09/05/25
-                    CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
+                            //il ya un soucis ici  quand il crée un nouveaux invedntaire toujurs il prend la premier valeur par defaut 09/05/25
+                            CreateInventoryDifficultMatier df = new CreateInventoryDifficultMatier(main, player);
 
-                    //on instancie la classe
-                    player.sendMessage(nextQuestion.getKey() + "Bravo 222222..." + nextQuestion.getValue() );
+                            //on instancie la classe
+                            player.sendMessage(nextQuestion.getKey() + "Bravo 222222..." + nextQuestion.getValue() );
 
-                    df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
+                            df.createInventory(player, "Question", nextQuestion.getKey(), nextQuestion.getValue());
 
-                    player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
-                    player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
-                    player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
-                    player.sendMessage("§4 le Q_q est " +  Q_q);
+                            player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
+                            player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
+                            player.sendMessage("L'inventaire à til etait crée?  le nextquestion key est :  "  + nextQuestion.getKey()+"et le ,exquesition valu est"+ nextQuestion.getValue());
+                            player.sendMessage("§4 le Q_q est " +  Q_q);
 
-                    // peut etre changer ça la je vien de le mettre en commentaire et pas encore tester 04/05/25  ByPass_NextQuestionIsEmpty = false;
+                            // peut etre changer ça la je vien de le mettre en commentaire et pas encore tester 04/05/25  ByPass_NextQuestionIsEmpty = false;
 
 
                 } else {
@@ -468,7 +469,7 @@ public class InventoryDefisQuestionGestion implements Listener {
                     e.printStackTrace();
                 }
 
-                player.sendMessage(ChatColor.DARK_AQUA  + "Vous avez terminer toute les questions de ce niveau !");
+                player.sendMessage(ChatColor.DARK_AQUA  + "AAAAAAVous avez terminer toute les questions de ce niveau !");
                 player.sendMessage("Vos point actuel sont " + point);
 
                 player.sendMessage("////Le subject et " + subject);
@@ -480,6 +481,7 @@ public class InventoryDefisQuestionGestion implements Listener {
                 player.closeInventory();
                 changingInventory.remove(player);
                 BlockQuestion(player,subject);
+                reset(player);
 
 
 
