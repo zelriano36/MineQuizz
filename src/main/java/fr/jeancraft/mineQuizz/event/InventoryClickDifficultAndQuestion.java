@@ -8,6 +8,7 @@ import fr.jeancraft.mineQuizz.Autre.ChangeDifficult;
 import fr.jeancraft.mineQuizz.Autre.CreateInventoryDifficultMatier;
 import fr.jeancraft.mineQuizz.Autre.QuestionLoader;
 import fr.jeancraft.mineQuizz.MineQuizz;
+import fr.jeancraft.mineQuizz.manager.PointManager;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -27,6 +28,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
     private final ChangeDifficult changeDifficult;
     private final QuestionLoader questionLoader;
     private final MineQuizz main;
+    private final PointManager pointManager;
     public InventoryQuestionPnj pnj;
     private FileConfiguration playerData;
     private File playerDataFile;
@@ -37,12 +39,13 @@ public class InventoryClickDifficultAndQuestion implements Listener {
     //pour   pouvoir récupérer leur point
 
 
-    public InventoryClickDifficultAndQuestion(ChangeDifficult changeDifficult, MineQuizz main,InventoryQuestionPnj pnj) {
+    public InventoryClickDifficultAndQuestion(ChangeDifficult changeDifficult, MineQuizz main, InventoryQuestionPnj pnj, PointManager pointManager) {
         this.changeDifficult = changeDifficult;
         this.main = main;
         this.questionLoader = new QuestionLoader(main);
         this.pnj = pnj;
-        
+        this.pointManager = pointManager;
+
         
     }
     
@@ -325,28 +328,11 @@ public class InventoryClickDifficultAndQuestion implements Listener {
 		      
 		      questionKeyBuilder = new StringBuilder("Q1");
 			  nextQuestionKey = questionKeyBuilder.toString();
+             pointManager.AddPoints(player, Addition_fin);
 
-             File fileC = new File(main.getDataFolder(), "classement.yml");
-
-             YamlConfiguration configC = YamlConfiguration.loadConfiguration(fileC);
-             String keyC = "players." + player.getUniqueId();
-
-             int pointC = configC.getInt(keyC + ".point",0);
-
-             point +=  Addition_fin;
-             config.set(key + ".point",point);
-             configC.set(keyC + ".point",point);
-
-             try {
-                 config.save(file);
-                 configC.save(fileC);
-             } catch (IOException e) {
-
-                 e.printStackTrace();
-             }
 			  
 			  player.sendMessage(ChatColor.DARK_AQUA  + "Vous avez terminer toute les questions de ce niveau !");
-			  player.sendMessage("Vos point actuel sont " + point);
+			  player.sendMessage("Vos point actuel sont " + pointManager.GetPoints(player));
 
              GestionInvetory gstinv = new GestionInvetory(main, player);
 

@@ -40,7 +40,7 @@ public class PassageClassrom implements Listener {
        if(block.getType() == Material.GOLD_BLOCK ){  
 
            player.sendMessage("Salut caca c'est pipi");
-            int x = blocSousJoueur.getX();
+           int x = blocSousJoueur.getX();
 
            int y = blocSousJoueur.getY();
 
