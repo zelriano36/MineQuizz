@@ -105,7 +105,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
         }
 
 
-
+        event.setCancelled(true);
     }
     @EventHandler
     public void onInventoryDifficultClick(InventoryClickEvent event) {
@@ -115,7 +115,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
         Player player = (Player) event.getWhoClicked();
   
         loadPlayerData();
-
+        event.setCancelled(true);
         if (clickedItem == null || clickedItem.getType() == Material.AIR) {
             return;
         }
@@ -217,7 +217,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
     public void onInventoryQuestionVerifClick(InventoryClickEvent event) {
     	
     	ItemStack clickedItem = event.getCurrentItem();
-
+        event.setCancelled(true);
 
         Player player = (Player) event.getWhoClicked();
 
@@ -250,6 +250,9 @@ public class InventoryClickDifficultAndQuestion implements Listener {
         	changingInventory.remove(player);
         	
         	player.sendMessage("Bonne réponse !" + point);
+            player.sendMessage("Bonne réponse !" + point);
+            player.sendMessage("Bonne réponse !" + point);
+            player.sendMessage("Bonne réponse !" + point);
         	
         	Addition_fin += 1;
 
@@ -279,9 +282,9 @@ public class InventoryClickDifficultAndQuestion implements Listener {
         	}
         	
         }
-        
-      
-        event.setCancelled(false);
+
+
+        event.setCancelled(true);
     }
     
     
@@ -328,7 +331,30 @@ public class InventoryClickDifficultAndQuestion implements Listener {
 		      
 		      questionKeyBuilder = new StringBuilder("Q1");
 			  nextQuestionKey = questionKeyBuilder.toString();
-             pointManager.AddPoints(player, Addition_fin);
+
+
+
+             File fileC = new File(main.getDataFolder(), "classement.yml");
+
+             YamlConfiguration configC = YamlConfiguration.loadConfiguration(fileC);
+             String keyC = "players." + player.getUniqueId();
+
+             // ne comprend pas son utiliter je pense que c'est pour le classement mais je trouve rien int pointC = configC.getInt(keyC + ".point",0);
+
+             point +=  Addition_fin;
+             config.set(key + ".point",point);
+             configC.set(keyC + ".point",point);
+
+             try {
+                 config.save(file);
+                 configC.save(fileC);
+             } catch (IOException e) {
+
+                 e.printStackTrace();
+             }
+
+
+
 
 			  
 			  player.sendMessage(ChatColor.DARK_AQUA  + "Vous avez terminer toute les questions de ce niveau !");

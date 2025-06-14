@@ -68,11 +68,13 @@ public void ON_Inventory_Start(Player player) {
 	    objet_jeux_meta2.setDisplayName(ChatColor.AQUA +"Defis");
 
 	    objet_jeux2.setItemMeta(objet_jeux_meta2);
-
+/*
 	    ItemStack objet_jeux3 = new ItemStack(Material.ENDER_EYE);
 	    ItemMeta objet_jeux_meta3 = objet_jeux3.getItemMeta();
 	    objet_jeux_meta3.setDisplayName(ChatColor.LIGHT_PURPLE + "Question-Culture-Général");  
 	    objet_jeux3.setItemMeta(objet_jeux_meta3);
+
+        */
 	    
 	    ItemStack objet_jeux4 = new ItemStack(Material.TNT);
 	    ItemMeta objet_jeux_meta4 = objet_jeux4.getItemMeta();
@@ -119,7 +121,7 @@ public void ON_Inventory_Start(Player player) {
 	    
 	    inventaire.setItem(12, objet_jeux1);
 	    inventaire.setItem(13, objet_jeux2);	   
-	    inventaire.setItem(11, objet_jeux3);
+	    inventaire.setItem(11, objet_deco2);
 	    inventaire.setItem(14, objet_jeux4);
 	    
 	    

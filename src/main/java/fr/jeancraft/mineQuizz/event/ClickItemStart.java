@@ -85,7 +85,7 @@ public class ClickItemStart implements Listener {
 		// Récupère l'objet sur lequel le joueur a cliqué
 		ItemStack clickedItem = event.getCurrentItem();
 		Player player = (Player) event.getWhoClicked();
-
+		event.setCancelled(true);
 		if (clickedItem == null || clickedItem.getType().isAir()) {
 			return;
 		}
@@ -175,6 +175,6 @@ dans l'inventaire normal donc je fait ça pour garder cette redondance
 		}
 
 		// Annule l'événement pour évitfer tout comportement par défaut
-		event.setCancelled(false);
+		event.setCancelled(true);
 	}
 }

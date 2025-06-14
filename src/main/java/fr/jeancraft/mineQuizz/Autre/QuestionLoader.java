@@ -156,14 +156,14 @@ public class QuestionLoader {
                 String questionDD = (String) questionDMap.get("question"); // Récupère la question
                 List<String> answers = (List<String>) questionDMap.get("answers"); // Récupère les réponses associées
                 questionsD.add(new AbstractMap.SimpleEntry<>(questionDD, answers));
-                player.sendMessage("§6________Ajout list");
+
                 // Ajoute la question et les réponses à la liste
             } catch (Exception e) {
                 player.sendMessage("___Erreur lors du chargement des questions.___"); // En cas d'erreur, log un message
             }
         }
 
-        player.sendMessage("§12________Il retourne a nouveaux "+ questionsD + "_______");
+
 
         return questionsD; // Retourne la liste des questions et réponses
     }
