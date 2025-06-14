@@ -339,7 +339,7 @@ public class InventoryClickDifficultAndQuestion implements Listener {
              YamlConfiguration configC = YamlConfiguration.loadConfiguration(fileC);
              String keyC = "players." + player.getUniqueId();
 
-             // ne comprend pas son utiliter je pense que c'est pour le classement mais je trouve rien int pointC = configC.getInt(keyC + ".point",0);
+             // ne comprend pas son utiliter je pensef que c'est pour le classement mais je trouve rien int pointC = configC.getInt(keyC + ".point",0);
 
              point +=  Addition_fin;
              config.set(key + ".point",point);

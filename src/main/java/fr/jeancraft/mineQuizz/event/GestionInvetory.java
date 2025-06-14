@@ -72,7 +72,7 @@ public void ON_Inventory_Start(Player player) {
 	    ItemStack objet_jeux3 = new ItemStack(Material.ENDER_EYE);
 	    ItemMeta objet_jeux_meta3 = objet_jeux3.getItemMeta();
 	    objet_jeux_meta3.setDisplayName(ChatColor.LIGHT_PURPLE + "Question-Culture-Général");  
-	    objet_jeux3.setItemMeta(objet_jeux_meta3);
+	    objet_jeux3.sjjetItemMeta(objet_jeux_meta3);
 
         */
 	    
