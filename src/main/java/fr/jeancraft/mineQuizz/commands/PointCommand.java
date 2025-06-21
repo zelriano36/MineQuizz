@@ -8,7 +8,10 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-public class PointCommand implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.List;
+
+public class PointCommand implements CommandExecutor, TabCompleter{
     private final PointManager pointManager;
 
     public PointCommand(PointManager pointManager) {
@@ -67,6 +70,15 @@ public class PointCommand implements CommandExecutor {
 
         return true;
     }
-
+    @Override
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (args.length == 1) {
+            List<String> points = new ArrayList<>();
+            points.add("set");
+            points.add("add");
+            points.add("remove");
+        }
+        return null;
+    }
 
 }

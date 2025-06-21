@@ -50,6 +50,7 @@ public final class MineQuizz extends JavaPlugin {
             getCommand("quizz").setExecutor(new QuizzCommand(this));
             getCommand("classement").setExecutor(new Classement(this));
             getCommand("point").setExecutor(new PointCommand(pointManager));
+            getCommand("point").setTabCompleter(new PointCommand(pointManager));
 
             // Chargement des données des joueurs
             loadPlayerData();
